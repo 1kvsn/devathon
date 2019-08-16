@@ -5,28 +5,24 @@ import EditProduct from './EditProduct';
 
 
 class Products extends React.Component {
-	constructor() {
-		super();
-		this.state = {
+		state = {
 			openEditor: false,
 			id: null,
 		}
 
-	}
-
+	//handles the editor opening and closing
 	handleEditor = () => {
 		this.setState({openEditor: !this.state.openEditor})
 	}
 
+	//handles the EditProduct component opening
 	handleEdit = (index) => {
-		console.log('handleEdit called')
 		this.setState({
 			openEditor: !this.state.openEditor,
 			id: index })
 	}
 
 	render() {
-		
 		return (
 			<>
 				<section className='wrapper'>
@@ -37,13 +33,14 @@ class Products extends React.Component {
 						{
 							this.props.items.map((item, index) => {
 								return (
-									<div className='item' key={index} onClick={() => this.handleEdit(index)}>
+									<div id="item" className='item' key={index} onClick={() => this.handleEdit(index)}>
 										<div>
 											<img src={"../images/" + item.images[0]} alt="product"/>
 										</div>
 										<div className="item-details">
 											<p className="item-title">{item.productTitle}</p>
-											<p className="item-price">INR {item.price}</p>
+											<hr/>
+											<p className="item-price">&#8377; {item.price}</p>
 										</div>
 
 									</div>

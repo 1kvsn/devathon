@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+
 class EditProduct extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const {id, productTitle, price, offerPrice, shippingCost, inventory, description, size, color} = this.props.items[this.props.id];
+		const {id, productTitle, images, price, offerPrice, shippingCost, inventory, description, size, color} = this.props.items[this.props.id];
 
 		this.state = {
 			id,
@@ -35,29 +36,53 @@ class EditProduct extends React.Component {
 
 		return (
 			<section className="edit-container">
-				<div>
-					<img src="" alt="" />
-
+				<div className="image-container">
+					<img src={"../images/" + this.props.items[this.props.id].images} alt="product" />
 				</div>
-				<form onSubmit={this.handleSubmit}>
+				<div className="image-upload">
+					<div>
+						<button>+</button>
+						<p className="add-more-text">Add More Photos</p>
+						<p className="drag-text">drag files here</p>
+					</div>
+				</div>
+
+				{/* Product Editor Text Form */}
+				<form className="form-container" onSubmit={this.handleSubmit}>
 					<label>Product Title</label>
-					<input type="text" name="productTitle" placeholder="Enter product title..." value={productTitle}  onChange={this.handleChange}/>
+					<input type="text" name="productTitle" placeholder="Enter product title" value={productTitle === "Product Title" ? "" : productTitle} onChange={this.handleChange}/>
+					<hr/>
 
 					<label>Price</label>
-					<input type="number" name="price" placeholder="Enter product price..." value={price} onChange={this.handleChange}/>
+					<span>&#8377;
+						<input type="text" name="price" placeholder="Enter product price" value={price === "--" ? "" : price} onChange={this.handleChange}/>
+					</span>
+					<hr/>
 
 					<label>Offer Price</label>
-					<input type="number" name="offerPrice" placeholder="Enter offer price" value={offerPrice} onChange={this.handleChange}/>
+					<span>&#8377;
+						<input type="text" name="offerPrice" placeholder="Enter offer price" value={offerPrice} onChange={this.handleChange}/>
+					</span>
+					<hr/>
 
 					<label>Shipping Cost</label>
-					<input type="number" name="shippingCost" placeholder="Enter shipping cost" value={shippingCost} onChange={this.handleChange}/>
+					<span>&#8377;
+						<input type="text" name="shippingCost" placeholder="enter shipping cost" value={shippingCost} onChange={this.handleChange}/>
+					</span>
+					 <hr/>
 
-					<label>Inventory</label>
-					<input type="" name="inventory" value={inventory} onChange={this.handleChange} />
+					<label htmlFor="inventory-select">Inventory</label>
+					<select name="inventory" value={inventory} onChange={this.handleChange}>
+						<option value="">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<hr />
 
 					<label>Description</label>
 					<input type="text" name="description" placeholder="Enter Description for Product" value={description} onChange={this.handleChange}/>
-					<button>=></button>
+					<button type="submit" value="submit">&#x27A1;</button>
 				</form>
 			</section>
 		)
