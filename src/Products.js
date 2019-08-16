@@ -1,24 +1,43 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import editProduct from './EditProduct';
+import EditProduct from './EditProduct';
 
 
 class Products extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			openEditor: false,
+			id: null,
+		}
 
-	handleEdit = () => {
-	
+	}
+
+	handleEditor = () => {
+		this.setState({openEditor: !this.state.openEditor})
+	}
+
+	handleEdit = (index) => {
+		console.log('handleEdit called')
+		this.setState({
+			openEditor: !this.state.openEditor,
+			id: index })
 	}
 
 	render() {
+		
 		return (
 			<>
 				<section className='wrapper'>
 					<div className="items-container">
 						{
+							this.state.openEditor ? <EditProduct id={this.state.id} handleEditor={this.handleEditor}/> : null
+						}
+						{
 							this.props.items.map((item, index) => {
 								return (
-									<div className='item' key={index} onClick={this.handleEdit}>
+									<div className='item' key={index} onClick={() => this.handleEdit(index)}>
 										<div>
 											<img src={"../images/" + item.images[0]} alt="product"/>
 										</div>

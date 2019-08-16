@@ -60,8 +60,10 @@ table {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	position: relative;
 
 	.item {
+		cursor: pointer;
 
 		img {
 			width: 250px;
@@ -71,4 +73,8 @@ table {
 			text-align: left;
 		}
 	}
+}
+
+.edit-container {
+	position: absolute;
 }
