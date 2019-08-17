@@ -100,7 +100,14 @@ body {
 	grid-column-gap: 10px;
 	background-color: #fff;
 	box-shadow: 0 0 5px 5px rgba(211, 211, 211, 0.603);
+	
 
+
+	.image-container {
+		img {
+			width: 100%;
+		}
+	}
 
 	.image-upload {
 		position: relative;
@@ -116,16 +123,19 @@ body {
 				background: none;
 				padding: 10px 15px;
 				color: lightgray;
+				outline: none;
 				border: 0.5px dotted lightgray;
 			}
 			.add-more-text {
 				margin: 10px;
 				font-weight: bold;
+				color: lightgray;
 				text-transform: uppercase;
 			}
 			.drag-text {
 				margin: 10px;
 				font-size: 10px;
+				color: lightgray;
 				text-transform: capitalize;
 			}
 		}
@@ -174,7 +184,6 @@ body {
 			background: none;
 			font-size: 16px;
 			padding-left: 10px;
-			color: lightgray;
 		}
 
 		button {
@@ -188,4 +197,25 @@ body {
 			background-color: #56C9E9;
 		}
 	}
+
+	.variation-container {
+		text-align: center;
+		margin-top: 40px;
+
+		button {
+			background: none;
+			padding: 10px 15px;
+			color: lightgray;
+			border: 0.5px dotted lightgray;
+			margin: 15px;
+			outline: none;
+		}
+
+		.variation-text {
+			font-size: 14px;
+			color: lightgray;
+			font-weight: bold;
+		}
+	}
 }
+

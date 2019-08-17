@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import Variation from './Variation';
 
 class EditProduct extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const {id, productTitle, images, price, offerPrice, shippingCost, inventory, description, size, color} = this.props.items[this.props.id];
+		const {id, productTitle, price, offerPrice, shippingCost, inventory, description} = this.props.items[this.props.id];
 
 		this.state = {
 			id,
@@ -31,8 +32,12 @@ class EditProduct extends React.Component {
 		this.props.handleEditor();
 	}
 
+	handleVariation = () => {
+		this.setState({showVariation: true,})
+	}
+
 	render() {
-		const {productTitle, price, offerPrice, shippingCost, inventory, description, size, color} = this.state;
+		const {productTitle, price, offerPrice, shippingCost, inventory, description} = this.state;
 
 		return (
 			<section className="edit-container">
@@ -84,6 +89,15 @@ class EditProduct extends React.Component {
 					<input type="text" name="description" placeholder="Enter Description for Product" value={description} onChange={this.handleChange}/>
 					<button type="submit" value="submit">&#x27A1;</button>
 				</form>
+				<div className="variation-container" onClick={this.handleVariation}>
+					{
+						this.state.showVariation ? <Variation /> : (
+						<div>
+							<button>+</button>
+							<p className="variation-text">Have variations to your product like size, color and more?</p>
+						</div>)
+					}
+				</div>
 			</section>
 		)
 	}
