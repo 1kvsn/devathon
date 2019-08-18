@@ -116,7 +116,6 @@ body {
 
 	.dropzone-container {
 		position: relative;
-		background: #fff;
 
 		input {
 			color: rgba(0, 0, 0, 0);
@@ -140,12 +139,11 @@ body {
 			display: grid;
 			grid-template-columns: 80px;
 			place-items: center;
-			// background-color: rgb(207, 228, 233);
+			background-color: rgb(218, 230, 233);
 
 
 			.upload-btn {
 				background: none;
-				// padding: 45px 25px;
 				color: lightgray;
 				outline: none;
 				border: 1px dotted lightgray;
@@ -169,9 +167,9 @@ body {
 			.plus {
 				background: none;
 				padding: 10px 15px;
-				color: lightgray;
+				color: rgb(177, 174, 174);
 				outline: none;
-				border: 1px dotted lightgray;
+				border: 1px dotted rgb(177, 174, 174);
 
 				input[type="file"] {
 					display: none;
@@ -181,13 +179,13 @@ body {
 			.add-more-text {
 				margin: 25px 15px 15px 15px;
 				font-weight: bold;
-				color: lightgray;
+				color: rgb(177, 174, 174);
 				text-transform: uppercase;
 			}
 			.drag-text {
 				margin: 10px;
 				font-size: 14px;
-				color: lightgray;
+				color: rgb(190, 190, 190);
 				text-transform: capitalize;
 			}
 		}
@@ -207,7 +205,7 @@ body {
 		}
 
 		label {
-			font-size: 12px;
+			font-size: 13px;
 			margin: 10px;
 			color: rgb(218, 216, 216);
 		}
@@ -248,6 +246,8 @@ body {
 			border: none;
 			color: #fff;
 			padding: 20px;
+			outline: none;
+			cursor: pointer;
 			font-size: 26px;
 			position: absolute;
 			background-color: #56C9E9;
@@ -261,15 +261,15 @@ body {
 		button {
 			background: none;
 			padding: 10px 15px;
-			color: lightgray;
-			border: 0.5px dotted lightgray;
+			color: rgb(177, 174, 174);
+			border: 1px dotted rgb(177, 174, 174);
 			margin: 15px;
 			outline: none;
 		}
 
 		.variation-text {
-			font-size: 14px;
-			color: lightgray;
+			font-size: 16px;
+			color: rgb(194, 194, 194);
 			font-weight: bold;
 		}
 

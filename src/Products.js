@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import EditProduct from './EditProduct';
 
-
 class Products extends React.Component {
 		state = {
 			openEditor: false,

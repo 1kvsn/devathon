@@ -1,10 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
 
-const imageMaxSize = 1000000000 // bytes
-const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
-const acceptedFileTypesArray = acceptedFileTypes.split(",").map((item) => { return item.trim() })
+const imageMaxSize = 1000000000; // bytes
+const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
+const acceptedFileTypesArray = acceptedFileTypes.split(",").map((item) => { return item.trim() });
+
+//background control for fileUpload box
+const bgColor = {
+  backgroundColor: 'rgb(218, 230, 233)'
+}
+
+const removeBg = {
+  background: '#fff'
+}
+
 
 class ImgDrop extends Component {
 
@@ -50,7 +60,6 @@ class ImgDrop extends Component {
         }, false)
 
         myFileItemReader.readAsDataURL(currentFile);
-
       }
     }
   }
@@ -76,18 +85,15 @@ class ImgDrop extends Component {
         }, false)
 
         myFileItemReader.readAsDataURL(currentFile);
-
       }
     }
   }
 
   render() {
-    
     const {imgSrc} = this.props;
-    console.log(imgSrc, 'imgSrccccc');
 
     return (
-      <div className="dropzone-container">
+      <div className="dropzone-container" style={imgSrc.slice(1).length === 0 ? bgColor : removeBg}>
         <div className="uploaded">
           {
             imgSrc.slice(1).length ? imgSrc.slice(1).map(image =>
@@ -98,7 +104,7 @@ class ImgDrop extends Component {
           <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes} multiple={true} maxSize={imageMaxSize}>
             {dropzoneProps => {
               return (
-                <div className={imgSrc.slice(1).length <8 ? "image-upload" : "hide"}>
+                <div className={imgSrc.slice(1).length <8 ? "image-upload" : "hide"} >
                   <div className={imgSrc.slice(1).length  ? "alt-input-container" : "file-input-container"}>
                     <label
                       htmlFor="file-upload"
