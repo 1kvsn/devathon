@@ -2,16 +2,18 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Variation from './Variation';
+import ImgDrop from './Dropzone';
 
 class EditProduct extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const {id, productTitle, price, offerPrice, shippingCost, inventory, description} = this.props.items[this.props.id];
+		const {id, productTitle, images, price, offerPrice, shippingCost, inventory, description} = this.props.items[this.props.id];
 
 		this.state = {
 			id,
 			productTitle,
+			images,
 			price,
 			offerPrice,
 			shippingCost,
@@ -24,6 +26,12 @@ class EditProduct extends React.Component {
 		this.setState({
 			[e.target.name]: e.target.value,
 		})
+	}
+
+	handleImages = (data) => {
+		this.setState(prevState => ({
+			images: [...prevState.images, data]
+		}))
 	}
 
 	handleSubmit = (e) => {
@@ -42,15 +50,9 @@ class EditProduct extends React.Component {
 		return (
 			<section className="edit-container">
 				<div className="image-container">
-					<img src={"../images/" + this.props.items[this.props.id].images} alt="product" />
+					<img src={"../images/" + this.props.items[this.props.id].images[0]} alt="product" />
 				</div>
-				<div className="image-upload">
-					<div>
-						<button>+</button>
-						<p className="add-more-text">Add More Photos</p>
-						<p className="drag-text">drag files here</p>
-					</div>
-				</div>
+				<ImgDrop handleImages={this.handleImages} imgSrc={this.state.images}/>
 
 				{/* Product Editor Text Form */}
 				<form className="form-container" onSubmit={this.handleSubmit}>

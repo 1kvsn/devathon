@@ -1,45 +1,73 @@
 import React from 'react';
 
+import SubVariation from './SubVariation';
+
+// const CreateInputElement = () => <input type="text" placeholder="Add subVariation"  onChange={this.handleInputValue} />
+
+
+
 class Variation extends React.Component {
 	state = {
-		optionCount: 1,
-		optionName: '',
 		options: [],
+		arr: {
+			name: "",
+			values: "",
+		},
+		count: 0,
 	}
 
-	handleLabel = (e) => {
+	// handleKeyUp = (e) => {
+	// 	if (e.keyCode === 13) {
+	// 		this.setState({ optionCount: this.state.optionCount + 1 })
+	// 	}
+	// }
+
+	handleInputName = (e) => {
 		this.setState({
-			optionName: e.target.value,
-			[e.target.value]: '',
+			arr: {
+				name: e.target.value,
+			}
 		})
 	}
 
-	handleKeyUp = (e) => {
-		if (e.keyCode === 13) {
-			this.setState({ optionCount: this.state.optionCount + 1 })
+	handleInputValue = (e) => {
+		if(e.key === 'Enter') {
+
+			console.log(e.key,e.target.value, 'inside e.key');
+			this.setState({
+				arr: {
+					values: e.target.value,
+				}
+			})
+			console.log(this.state.arr.values);
 		}
 	}
 
+	handleCreateInputElement = () => {
+		this.setState({count: this.state.count + 1})
+		// console.log(this.state.count, 'inside createINputElement');
+	}
+	
 	render() {
+		let elm = [];
+		for(var i=0; i<this.state.count; i++){
+			elm.push(<SubVariation handleInputValue={this.handleInputValue} value={this.state.arr}/>)
+		}
+		
 		return (
 			<>
-
-				{
-					this.state.options.map(option => {
-						return (
-							<div>
-								<label>{option.key}</label>
-								<input type="text" value={option.value} />
-							</div>
-						);
-					})
-				}
-
 				<div>
-					<label>Option {this.state.optionCount}</label>
-					<input type="text" placeholder="Add option name" value={this.state.optionName} onChange={this.handleLabel} onKeyUp={this.handleKeyUp} />
-					{/* <input type="text" placeholder={this.state.options && this.state.options[this.state.options.length - 1].key} /> */}
+					<label>Option {this.state.options.length+1}</label>
+					<input type="text" placeholder="Add option name" onChange={this.handleInputName}/>
+					
 				</div>
+				{
+					elm && elm.map(el => el)
+				}
+					<div className="subvariations" onClick={this.handleCreateInputElement}>
+						<button>+</button>
+						<p>Add more variation</p>
+					</div>
 
 			</>
 		)
