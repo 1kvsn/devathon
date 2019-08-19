@@ -1,4 +1,5 @@
 
+// Stores the initial data
 const initialState = [{
 	id: 1,
 	productTitle: 'Product Title',
@@ -81,7 +82,7 @@ const initialState = [{
 },]
 
 
-
+//updates the store and returns state
 export function products(state=initialState, action) {
 	switch(action.type) {
 		case "UPDATE_PRODUCT":

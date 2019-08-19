@@ -6,16 +6,17 @@ This project is made using React.js for UI, Redux.js for state management and SC
 
 * Homepage shows the list of products for sale.
 * When clicked on the product, it opens up in a Product Editor.
-* User can add text info and upload more images.
+* User can add text info and upload more images by selecting images from file explorer.
 * Upto 8 images can be saved. Accepted image formats: jpg, png, jpeg and gif. 
 * Image validation. An alert will appear in the window when tried to upload incompatible images or other file types.
+* Add more variations with custom name and values.
 * Click on `==>` icon to submit the changes and save it in Redux store.
 
 
 ## Features yet to implement
 
-* Tile expansion effect on homepage.
-* Add more variations.
+* When product tile is clicked, the expansion should occur within viewport.
+* Drag n Drop feature needs to be fixed.
 
 ## Available Scripts
 

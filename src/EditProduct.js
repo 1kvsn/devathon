@@ -8,7 +8,9 @@ class EditProduct extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const { id, productTitle, images, price, offerPrice, shippingCost, inventory, description } = this.props.items[this.props.id];
+		const itemIndex = this.props.items.findIndex((i) => i.id == this.props.id);
+
+		const { id, productTitle, images, price, offerPrice, shippingCost, inventory, description, variations } = this.props.items[itemIndex];
 
 		this.state = {
 			id,
@@ -19,41 +21,40 @@ class EditProduct extends React.Component {
 			shippingCost,
 			inventory,
 			description,
-			options: [],
-			optionName: "",
-			optionValues: [],
-			variationCount: 0,
+			variations: variations || [], // { name: '', values: []}
 		}
 	}
 
-	//Variation Methods
-	handleKeyUp = (e) => {
-		if (e.keyCode === 13) {
-			// this.setState({ optionCount: this.state.optionCount + 1 })
-			this.setState({
-				optionValues: [
-					...this.state.optionValues,
-					e.target.value
-				]
-			})
-		}
+	handleInputName = (val, index) => {
+		const variations = this.state.variations;
+		variations[index].name = val;
+		this.setState({ variations });
 	}
 
-	handleInputName = (e) => {
-		this.setState({
-			optionName:  e.target.value,
-		})
+	handleCreateVariationOption = (index) => {
+		const variations = this.state.variations;
+		variations[index].values = variations[index].values.concat([""]);
+		this.setState({ variations });
 	}
 
-	handleCreateInputElement = () => {
-		console.log('called createElement....');
-		this.setState(prevState => ({
-			variationCount: this.state.variationCount + 1,
-			optionValues: [...prevState.optionValues]
-		}))
+	handleAddNewVariation = () => {
+		const variations = this.state.variations;
+		const newVariation = {
+			name: '',
+			values: []
+		};
+		variations.push(newVariation);
+		this.setState({ variations })
 	}
 
-	//////////////////////////
+	handleVariationValues = (val, valueIndex, variationIndex) => {
+		const variations = this.state.variations;
+		const variation = variations[variationIndex];
+		variation.values[valueIndex] = val;
+		variations[variationIndex] = variation;
+		this.setState({ variations });
+	}
+
 
 	handleChange = (e) => {
 		this.setState({
@@ -70,11 +71,7 @@ class EditProduct extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.props.dispatch({ type: "UPDATE_PRODUCT", payload: this.state })
-		this.props.handleEditor();
-	}
-
-	handleVariation = () => {
-		this.setState({ showVariation: true, })
+		this.props.handleCloseEditor();
 	}
 
 	render() {
@@ -83,8 +80,9 @@ class EditProduct extends React.Component {
 		return (
 			<section className="edit-container">
 				<div className="image-container">
-					<img src={"../images/" + this.props.items[this.props.id].images[0]} alt="product" />
+					<img src={"../images/" + this.state.images[0]} alt="product" />
 				</div>
+
 				<ImgDrop handleImages={this.handleImages} imgSrc={this.state.images} />
 
 				{/* Product Editor Text Form */}
@@ -124,21 +122,26 @@ class EditProduct extends React.Component {
 					<input type="text" name="description" placeholder="Enter Description for Product" value={description} onChange={this.handleChange} />
 					<button type="submit" value="submit">&#x27A1;</button>
 				</form>
-				<div className="variation-container" onClick={this.handleVariation}>
-					{
-						this.state.showVariation ? (
-							<>
-								<Variation id={this.props.id} handleKeyUp={this.handleKeyUp} handleInputName={this.handleInputName} handleCreateInputElement={this.handleCreateInputElement} options={this.state.options} variationCount={this.state.variationCount}/>
-								<div>
-									<button>+</button>
-									<p className="variation-text">Have variations to your product like size, color and more?</p>
-								</div>
-							</>) : (
-								<div>
-									<button>+</button>
-									<p className="variation-text">Have variations to your product like size, color and more?</p>
-								</div>)
-					}
+
+				<div className="variation-container">
+						<>
+							{ this.state.variations.map((v, index) => {
+								return (
+									// Variation Component
+									<Variation
+										variationIndex={index}
+										variation={v}
+										handleInputName={this.handleInputName}
+										handleCreateVariationOption={this.handleCreateVariationOption}
+										handleVariationValues={this.handleVariationValues}
+									/>
+								)
+							}) }
+							<div className="variation-init-text" onClick={this.handleAddNewVariation}>
+								<button>+</button>
+								<p className="variation-text">{ this.state.variations.length > 0 ? "Add More Variations" : "Have variations to your product like size, color and more?"}</p>
+							</div>
+						</>
 				</div>
 			</section>
 		)

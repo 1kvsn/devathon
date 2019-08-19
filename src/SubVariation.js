@@ -7,7 +7,7 @@ class SubVariation extends React.Component {
 	render() {
 		return (
 			<>
-				<input type="text" placeholder="Add subVariation" onKeyUp={(e) => this.props.handleKeyUp(e)} value={this.props.values}  />
+				<input type="text" placeholder="Add subVariation" onChange={(e) => this.props.handleChange(e.target.value)} value={this.props.value} />
 			</>
 		)
 	}
