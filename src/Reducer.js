@@ -8,8 +8,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id: 2,
@@ -20,8 +18,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id: 3,
@@ -32,8 +28,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id: 4,
@@ -44,8 +38,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id: 5,
@@ -56,8 +48,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id:6,
@@ -68,8 +58,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id: 7,
@@ -80,8 +68,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },
 {
 	id: 8,
@@ -92,8 +78,6 @@ const initialState = [{
 	shippingCost: "0",
 	inventory: "",
 	description: "",
-	size: [],
-	color: [],
 },]
 
 

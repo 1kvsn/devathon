@@ -2,13 +2,12 @@ import React from 'react';
 
 class SubVariation extends React.Component {
 
-
+	// onChange={(e, index) => this.props.handleInputValue(e, index)}
 
 	render() {
-		console.log(this.props, 'props in subvariation');
 		return (
 			<>
-				<input type="text" placeholder="Add subVariation" onKeyUp={(e) => this.props.handleInputValue(e)} value={this.props.value.values} onChange={(e) => this.props.handleInputValue(e)} />
+				<input type="text" placeholder="Add subVariation" onKeyUp={(e) => this.props.handleKeyUp(e)} value={this.props.values}  />
 			</>
 		)
 	}

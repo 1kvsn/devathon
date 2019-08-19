@@ -242,6 +242,7 @@ body {
 
 		button {
 			bottom: 0;
+			margin: 0;
 			right: -1px;
 			border: none;
 			color: #fff;
@@ -256,7 +257,22 @@ body {
 
 	.variation-container {
 		text-align: center;
-		margin-top: 40px;
+		margin-top: 5px;
+
+		input[type=text], input::placeholder  {
+			height: 26px;
+			width: 100%;
+			font-size: 14px;
+			font-weight: bold;
+			outline: none;
+			border: none;
+			border-bottom: 0.5px solid rgb(235, 235, 235);
+			color: rgb(129, 129, 129);
+		}
+		input::placeholder {
+			color: lightgray;
+		}
+	}
 
 		button {
 			background: none;
@@ -273,22 +289,32 @@ body {
 			font-weight: bold;
 		}
 
-		.subvariations {
+		.option-container {
 			display: flex;
-			justify-content: flex-start;
-			margin: 10px;
-			
-			button {
-				padding: 4px 8px;
-				margin: 10px 10px 5px 20px;
+			flex-direction: column;
+
+			label {
+				text-align: start;
+				margin-bottom: 10px;
+				font-size: 15px;
+    		color: #dad8d8;
 			}
 
-			p {
-				align-self: center;
-			}
+	}
+	.subvariations {
+		display: flex;
+		justify-content: flex-start;
+		margin: 5px;
+		
+		button {
+			padding: 4px 8px;
+			margin: 10px 10px 5px 20px;
+		}
+
+		p {
+			align-self: center;
+			color: #dad8d8;
 		}
 	}
-
-
 }
 
