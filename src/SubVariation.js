@@ -2,8 +2,6 @@ import React from 'react';
 
 class SubVariation extends React.Component {
 
-	// onChange={(e, index) => this.props.handleInputValue(e, index)}
-
 	render() {
 		return (
 			<>

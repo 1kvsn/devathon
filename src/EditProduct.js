@@ -21,7 +21,7 @@ class EditProduct extends React.Component {
 			shippingCost,
 			inventory,
 			description,
-			variations: variations || [], // { name: '', values: []}
+			variations: variations || [],
 		}
 	}
 
