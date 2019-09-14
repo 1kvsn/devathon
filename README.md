@@ -2,6 +2,8 @@
 
 This project is made using React.js for UI, Redux.js for state management and SCSS for styling.
 
+## Live @ https://devathon-task.netlify.com/
+
 ## Features implemented so far
 
 * Homepage shows the list of products for sale.
